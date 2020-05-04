@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{0E303810-6E4A-4A0A-B8A3-78A41A00F5A1}|Default">
+  <MonoDevelop.Ide.ItemProperties.LEDboxClientExample.iOS FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="LEDboxClientExample/MainPage.xaml.cs">
+    <Files>
+      <File FileName="LEDboxClientExample/MainPage.xaml.cs" Line="40" Column="46" />
+      <File FileName="LEDboxClientExample/APILEDbox.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="LEDboxClientExample" expanded="True">
+            <Node name="LEDboxClientExample" expanded="True">
+              <Node name="MainPage.xaml" expanded="True">
+                <Node name="MainPage.xaml.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.LEDboxClientExample.Android AndroidDesignerPreferredTheme="Theme.AppCompat.Light.NoActionBar" PreferredExecutionTarget="Android.BRE9K18712900073" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <AuthorInfo Name="Tech4Sport s.r.l." Email="info@tech4sport.com" Copyright="@Copyright 2020" Company="Tech4Sport" Trademark="Tech4Sport" />
+</Properties>

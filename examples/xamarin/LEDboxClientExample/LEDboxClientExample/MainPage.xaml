@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LEDboxClientExample.MainPage">
+
+    <StackLayout>
+         <Label Text="IP LEDbox"></Label>
+         <Entry x:Name="ip_ledbox" Text="172.24.1.1"></Entry>
+         <Button Text="Connect to LEDbox" Clicked="Handle_connect" />
+         <Label x:Name="lblResponse" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"></Label>
+    </StackLayout>
+
+</ContentPage>

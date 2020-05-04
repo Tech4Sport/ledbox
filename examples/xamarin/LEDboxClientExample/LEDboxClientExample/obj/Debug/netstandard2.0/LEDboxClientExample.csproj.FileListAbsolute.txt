@@ -1,0 +1,12 @@
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/bin/Debug/netstandard2.0/LEDboxClientExample.deps.json
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/bin/Debug/netstandard2.0/LEDboxClientExample.dll
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/bin/Debug/netstandard2.0/LEDboxClientExample.pdb
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/LEDboxClientExample.csprojAssemblyReference.cache
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/App.xaml.g.cs
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/MainPage.xaml.g.cs
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/LEDboxClientExample.csproj.CoreCompileInputs.cache
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/LEDboxClientExample.AssemblyInfoInputs.cache
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/LEDboxClientExample.AssemblyInfo.cs
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/XamlC.stamp
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/LEDboxClientExample.dll
+/Volumes/3DResearch/Coding srls/PROGETTI/Tech4Sport/LEDbox/device/documentation/examples/xamarin/LEDboxClientExample/LEDboxClientExample/obj/Debug/netstandard2.0/LEDboxClientExample.pdb
