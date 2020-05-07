@@ -1,24 +1,24 @@
 # Playlist Images
-> Il plugin permette di riprodurre in background una sequenza di immagini (JPG, PNG, GIF e GIF animate) sul LEDbox. La sequenza di immagini può essere riprodotta in loop infinito, oppure può interrompersi con un countdown. 
+> The plugin will be plays, in background mode, a playlist of images ( JPG, PNG, GIF or animate GIF) on LEDbox. The playlist of images cans will be play in infinity loop or based by a timer. 
 
 # SetPlaylistImage
 
-> Imposta i parametri della playlist (sequenza di immagini) da visualizzare
+> Set parameters of playlist
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "SetPlaylistImage",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
-"value": <playlist> #parametri della playlist
+"alias": <string>, //username
+"sport": <string>, //sport selected
+"value": <playlist> //playlist parameters
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -31,33 +31,33 @@
 
 # StartPlaylistImage
 
-> Avvia la riproduzione della playlist nel LEDbox
+> Start to play the playlist
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "StartPlaylistImage",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
+"alias": <string>, //username
+"sport": <string>, //sport selected
 "value": {
-        "hashname": <string>, #identificativo della playlist
-        "title": <string> #titolo della playlist
+        "hashname": <string>, //id of playlist
+        "title": <string> //title of playlist
     }
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
 "status":"ok",
 "sender": "StartPlaylistImage",
 "value": {
-        "hashname": <string>, #identificativo della playlist
-        "title": <string> #titolo della playlist
+        "hashname": <string>, //id of playlist
+        "title": <string> //title of playlist
     }
 }
 ```
@@ -65,31 +65,31 @@
 
 # PausePlaylistImage
 
-> Mette in pausa la riproduzione della playlist in corso
+> Set the current playlist in pause
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "PausePlaylistImage",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
+"alias": <string>, //username
+"sport": <string>, //sport selected
 "value": {
-        "hashname": <string>, #identificativo della 
+        "hashname": <string>, //id of the playlist 
     }
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
 "status":"ok",
 "sender": "PausePlaylistImage",
 "value": {
-        "hashname": <string>, #identificativo della playlist
+        "hashname": <string>, //id of the playlist
     }
 }
 ```
@@ -97,30 +97,30 @@
 
 # StopPlaylistImage
 
-> Ferma la riproduzione della playlist in corso
+> Stop the playlist and show a "waiting" layout
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "StopPlaylistImage",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
+"alias": <string>, //username
+"sport": <string>, //sport selected
 "value": ""
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
 "status":"ok",
 "sender": "StopPlaylistImage",
 "value": {
-        "hashname": <string>, #identificativo della playlist
-        "title": <string> #titolo della playlist
+        "hashname": <string>, //id of playlist
+        "title": <string> //title of playlist
     }
 }
 ```
@@ -129,22 +129,22 @@
 
 # GetListPlaylistImage
 
-> Restituisce l'elenco di tutte le playlist di un utente e uno sport caricate sul LEDbox
+> Get a list of all playlist contains on LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "GetListPlaylistImage",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
+"alias": <string>, //username
+"sport": <string>, //sport selected
 "value": ""
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -152,10 +152,10 @@
 "sender": "GetListPlaylistImage",
 "value": {
         [{
-            "hashname":<string>, //identificativo della playlist
-            "title":<string>, //titolo della playlist
-            "current_status":<int>, // identifica lo stato attuale della playlist (0 = non in riproduzione; 1 = in riproduzione; 2 = in pausa)
-            "type": <int> //tipologia playlist (0 = immagini, 1 = video)
+            "hashname":<string>, //id of playlist
+            "title":<string>, //title of playlist
+            "current_status":<int>, // state of playlist (0 = not playing; 1 = playing; 2 = pause)
+            "type": <int> //type of playlist (0 = image, 1 = video)
         }]
     }
 }
@@ -164,11 +164,11 @@
 
 # UploadPlaylistImage
 
-> Carica il file playlist sul LEDbox
+> Upload a playlist file on LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
@@ -179,7 +179,7 @@
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -192,11 +192,11 @@
 
 # DeleteAllPlaylistImage
 
-> Elimina tutte le playlist di un utente e uno sport sul LEDbox
+> Delete all playlist of a username and sport on LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
@@ -207,7 +207,7 @@
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {

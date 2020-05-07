@@ -1,24 +1,24 @@
 # Practice
-> Il plugin permette di riprodurre in background una sequenza di esercizi (immagini/animazioni), ognuno diviso in due tempi: il tempo di preparazione (setup) e il tempo di esecuzione esercizio (work). Ogni tempo viene scandito da un suono emesso dal buzzer del LEDbox. 
+> The plugin will be plays, in background mode, a exercises sequence on LEDbox. Every practice is divided in two parts: the setup time and the rest time. At the end of both phases, will be play a sound from buzzer. 
 
 # SetPractice
 
-> Imposta i parametri della sequenza di esercizi
+> Set parameters of practice
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "SetPractice",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
-"value": <practice> #parametri della sequenza
+"alias": <string>, //username
+"sport": <string>, //sport selected
+"value": <practice> //parameters of practice
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -65,19 +65,19 @@
 
 # PausePractice
 
-> Mette in pausa la riproduzione della sequenza in corso
+> Set the current practice in pause
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "PausePractice",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
+"alias": <string>,
+"sport": <string>,
 "value": {
-        "hashname": <string>, #identificativo della sequenza
+        "hashname": <string>, //id of practice
     }
 }
 ```
@@ -89,7 +89,7 @@
 "status":"ok",
 "sender": "PausePractice",
 "value": {
-        "hashname": <string>, #identificativo della sequenza
+        "hashname": <string>
     }
 }
 ```
@@ -97,30 +97,30 @@
 
 # StopPractice
 
-> Ferma la riproduzione della sequenza in corso
+> Stop the current practice and show a "waiting" layout
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "StopPractice",
-"alias": <string>, #nome dell'utente
+"alias": <string>, 
 "sport": <string>, #nome dello sport selezionato
 "value": ""
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
 "status":"ok",
 "sender": "StopPractice",
 "value": {
-        "hashname": <string>, #identificativo della sequenza
-        "title": <string> #titolo della sequenza
+        "hashname": <string>,
+        "title": <string>
     }
 }
 ```
@@ -129,22 +129,22 @@
 
 # GetListPractice
 
-> Restituisce l'elenco di tutte le sequenze di esercizi di un utente e uno sport caricate sul LEDbox
+> Get a list of all practices contains on LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "GetListPractice",
-"alias": <string>, #nome dell'utente
-"sport": <string>, #nome dello sport selezionato
+"alias": <string>,
+"sport": <string>,
 "value": ""
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -152,10 +152,10 @@
 "sender": "GetListPractice",
 "value": {
         [{
-            "hashname":<string>, //identificativo della playlist
-            "title":<string>, //titolo della playlist
-            "current_status":<int>, // identifica lo stato attuale della playlist (0 = non in riproduzione; 1 = in riproduzione; 2 = in pausa)
-            "type": <int> //tipologia playlist (0 = immagini, 1 = video)
+            "hashname":<string>,
+            "title":<string>,
+            "current_status":<int>, // status of practice (0 = non playing; 1 = playing; 2 = in pause)
+            
         }]
     }
 }
@@ -164,11 +164,11 @@
 
 # UploadPractice
 
-> Carica il file sequenza esercizi sul LEDbox
+> Upload a practice file on LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
@@ -179,7 +179,7 @@
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -192,11 +192,11 @@
 
 # DeleteAllPractice
 
-> Elimina tutte le sequenze esercizi di un utente e uno sport sul LEDbox
+> Delete all practices of a username and sport on LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
@@ -207,7 +207,7 @@
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {

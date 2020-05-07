@@ -1,109 +1,124 @@
-# Tipi di dati
+# Structures
 
 # section
-> Identifica la sezione del layout
+A section of layout
 
 ```json
 {
-"name": <string>, //nome della sezione,
-"value":[<attrib>] //array degli attributi della sezione
+"name": <string>, //name section,
+"value":[<attrib>] //array of attributes of the section
 }
 ```
 
 # attrib
-> Attributi della sezione
+Attribute of section
 
 ```json
 {
-"attrib": <string>, //nome dell'attributo,
-"value":<string> //valore dell'attributo
+"attrib": <string>, //attribute name (ex. text, color, x, y ...),
+"value":<string> //value of attribute
 }
 ```
 
 # horn
-> Attributi per modulare il suono del buzzer
+Attributes of sound
 ```json
 {
-"times": <int>, //numero di suoni da riprodurre,
-"sleep":<int> //valore in millisecondi che indica la pausa di un suono e l'altro
+"times": <int>, //number of sounds to play,
+"sleep":<int> //pause in milliseconds between two sounds 
 }
 ```
 
 # config
-> Parametro di configurazione del LEDbox
+LEDbox config parameter
 ```json
 {
-"section": <int>, //sezione di appartenza del parametro
-"field":<int>, //nome del parametro
-"value":<string> //valore del parametro
+"section": <enum("NETWORK","WIFI","GENERAL","LAYOUT")>, //section of parameter
+"field":<string>, //field name
+"value":<string>, //value of parameter
+"device":<string> //serial number of LEDbox
 }
 ```
+The parameters are:
+- GENERAL
+ - mode //modality of LEDbox ("master" or "slave")
+ - ip_master //IP Address of master LEDbox (when mode=slave)
+- WIFI
+ - mode // modality of Wifi Connection ("ap" = Access Point; "client" = Wifi Client)
+ - ssid // SSID of wireless network to connect the LEDbox (when mode=client)
+ - psk // password of wireless network to connect the LEDbox (when mode=client)
+- NETWORK
+ - mode // modality of network card ("dhcp" or "static")
+ - ip // IP address (when mode=static)
+ - subnet // Subnet address (when mode=static)
+ - gateway // IP gateway address (when mode=static)
+ 
 
 # upload
-> Parametri per effettuare l'upload di un file sul LEDbox
+Attribute of upload file
 ```json
 {
-"filename": <string>, //nome del file da caricare
-"exist":<bool>, //indica se il file è già esistente sul LEDbox
-"filepath":<string>, //path del file locale (necessario per ottenerlo nel messaggio di risposta)
-"type": <enum(media,layout,upgrade)> //tipologia di file da caricare
+    "filename": <string>, //filename
+    "exist":<bool>, //only on response message check if the file already exist on the LEDbox
+    "filepath":<string>, //path of local file
+    "type": <enum(media,layout,upgrade)> //type of file to upload
  }
 ```
 
 # playlist
 
-> Parametri di una playlist
+Playlist parameters
 
 ```json
 {
 
-    "hashname": <string>, //identificativo del file
-    "title":<string>, //titolo della playlist
-    "max_counter_time":<int>, //valore in secondi; se 0 la playlist viene eseguita in loop; se > 0 la playlist si interrempe al termine del counter
-    "onfinish": <string>, //indica quale layout deve essere aperto quando la playlist termina
-    "items": [<file_playlist>] //elenco dei file da eseguire nella playlist
+    "hashname": <string>, //unique identifier of playlist
+    "title":<string>, //title of playlist
+    "max_counter_time":<int>, //value in seconds; if value=0 the playlist will be run in loop; if value > 0 the playlist will be interrupt at end of timer
+    "onfinish": <string>, //name of layout that will be show at the end of playlist;
+    "items": [<file_playlist>] //list of files of playlist
 }
 ```
 
 # file_playlist
 
-> Parametri di una playlist
+Parameter of file of the playlist
 
 ```json
 {
 
-    "filename": <string>, //nome del file
-    "type":<int>, //0 = immagine; 1 = video
-    "duration":<int> //secondi di permanenza dell'immagine
+    "filename": <string>, //filename to show (image JPG, PNG or GIF)
+    "type":<int>, //0 = image; 1 = video
+    "duration":<int> //seconds of duration image
 }
 ```
 
 
 # practice
 
-> Parametri di una sequenza esercizi
+Parameter of practice
 
 ```json
 {
 
-    "hashname": <string>, //identificativo del file
-    "title":<string>, //titolo della sequenza
-    "items": [<file_practice>] //elenco dei file da eseguire
+    "hashname": <string>, //unique identifier of practice
+    "title":<string>, //title of practice
+    "items": [<file_practice>] //list of files of practice
 }
 ```
 
 # file_practice
 
-> Parametri di un file per la sequenza esercizi
+Parameter of file of the practice
 
 ```json
 {
 
-    "filename": <string>, //nome del file
-    "type":<int>, //0 = immagine; 1 = video
-    "rest":<int>, //secondi di permanenza della fase di setup
-    "work":<int>, //secondi di permanenza della fase di esecuzione di esercizi
-    "soundrest":<enum(1,2,3,4,5,6)>, //tipologia di suono da emettere alla fine della fase setup
-    "soundwork":<enum(1,2,3,4,5,6)>, //tipologia di suono da emettere alla fine della fase rest
+    "filename": <string>, //filename
+    "type":<int>, //0 = image; 1 = video
+    "rest":<int>, //seconds of duration of rest phase
+    "work":<int>, //seconds of duration of work phase
+    "soundrest":<enum(1,2,3,4,5,6)>, //sound to play after the end of rest phase
+    "soundwork":<enum(1,2,3,4,5,6)>, //sound to play after the end of work phase
 }
 ```

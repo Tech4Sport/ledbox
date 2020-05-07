@@ -1,11 +1,11 @@
-# API
+# Core APIs
 
 # Info
-> Restituisce i dati del LEDbox
+Get main info of the LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
@@ -14,7 +14,7 @@
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -22,22 +22,22 @@
 "sender": "Info",
 "value":
     {
-        "deviceName": <string>, //numero seriale del LEDbox,
-        "version": <float>, //versione del firmware del LEDbox,
+        "deviceName": <string>, //serial number of the LEDbox,
+        "version": <float>, //firmware version of the LEDbox,
     }
 }
 ```
 <!--  tabs:end  -->
-### Esempio
+### Example
 <!--  tabs:start  -->
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
 "cmd": "Info",
 "value":""
 ```
-#### ** Risposta **
+#### ** Response **
 ```json
 {
 "status":"ok",
@@ -53,11 +53,11 @@
 
 
 # Init
-> Inizializza la connessione al LEDbox
+Initializate the connection of the LEDbox
 
 <!--  tabs:start  -->
 
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
@@ -72,7 +72,7 @@
 }
 ```
 
-#### ** Risposta **
+#### ** Response **
 
 ```json
 {
@@ -89,9 +89,9 @@
 }
 ```
 <!--  tabs:end  -->
-### Esempio
+### Example
 <!--  tabs:start  -->
-#### ** Richiesta **
+#### ** Request **
 
 ```json
 {
@@ -105,7 +105,7 @@
     }
 }
 ```
-#### ** Risposta **
+#### ** Response **
 ```json
 {
 "status":"ok",
@@ -123,10 +123,10 @@
 <!--  tabs:end  -->
 
 # Disconnect
-> Disconnette il client dal LEDbox
+Disconnect current client from the LEDbox
 <!--  tabs:start  -->
 
-### ** Richiesta **
+### ** Request **
 
 ```json
 {
@@ -136,7 +136,7 @@
 }
 ```
 
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "Disconnect",
@@ -148,51 +148,51 @@
 <!--  tabs:end  -->
 
 # SetLayout
-> Carica e visualizza sul LEDbox un layout. Il layout viene caricato in memoria e nel caso di richiamo viene rivisualizzato con tutti i parametri già in precedenza modificati
+Load and show a layout file. The layout is loaded to the memory and if it's recalled it's review with all parameters already modified in previous.
 
 
 <!--  tabs:start  -->
-#### ** Richiesta 1 **
-Caricamento in memoria -> Visualizzazione sul LEDbox
+#### ** Request 1 **
+Load to the memory -> Show on display
 ```json
 {
 "cmd": "SetLayout",
-"value": <string> //nome del layout
+"value": <string> //layout name
 }
 ```
-#### ** Richiesta 2 **
-Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione sul LEDbox
+#### ** Request 2 **
+Load to the memory -> Edit values of sections -> Show on display
 ```json
 {
 "cmd": "SetLayout",
-"name": <string>, //nome del layout 
-"value":[<section>] //array delle sezioni da modificare
+"name": <string>, //layout name 
+"value":[<section>] //array of sections
 }
 ```
 
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "SetLayout",
-"value":<string> //nome del layout caricato
+"value":<string> //layout name
 }
 ```
 
 <!--  tabs:end  -->
 
-### Esempio
+### Example
 
 <!--  tabs:start  -->
-#### ** Richiesta 1 **
-Caricamento in memoria -> Visualizzazione sul LEDbox
+#### ** Request 1 **
+Load to the memory -> Show on display
 ```json
 {
 "cmd": "SetLayout",
 "value": "intro"
 }
 ```
-#### ** Richiesta 2 **
-Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione sul LEDbox
+#### ** Request 2 **
+Load to the memory -> Edit values of sections -> Show on display
 ```json
 {
 "cmd": "SetLayout",
@@ -216,7 +216,7 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
 }
 ```
 
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "SetLayout",
@@ -227,35 +227,35 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
 <!--  tabs:end  -->
 
 # ReloadLayout
-> Ricarica un layout riaggiornandolo in quello presente in memoria (se già stato richiamato dal comando SetLayout)
+Reload a layout
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "ReloadLayout",
-"value": <string> //nome del layout,
+"value": <string> //layout name,
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "ReloadLayout",
-"value":<string> //nome del layout caricato
+"value":<string> //layout name
 }
 ```
 <!-- tabs:end -->
 
-### Esempio
+### Example
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "ReloadLayout",
 "value": "intro"
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "ReloadLayout",
@@ -266,35 +266,35 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
 
 
 # GetLayout
-> Restituisce il nome del layout corrente
+Get a current layout name
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "GetLayout",
 "value": "",
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "GetLayout",
-"value":<string> //nome del layout caricato
+"value":<string> //layout name
 }
 ```
 <!-- tabs:end -->
 # SetSection
-> Modifica una sezione del layout corrente
+> Edit a section of current layout
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "SetSection",
-"name": <string>, //nome della sezione da modificare,
-"value": <attrib> //parametri della sezione
+"name": <string>, //section name,
+"value": <attrib> or [<attrib>] //parameters of section (see attrib structure)
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "SetSection",
@@ -303,10 +303,10 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
 ```
 <!-- tabs:end -->
 
-### Esempio
+### Example
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "SetSection",
@@ -317,7 +317,7 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
     }
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "SetSection",
@@ -327,16 +327,16 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
 <!-- tabs:end -->
 
 # SetSections
-> Modifica una o più sezioni del layout corrente
+Edit one or more sections of current layout
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "SetSections",
-"value": [<section>] //array in cui ogni elemento è una sezione da modificare
+"value": [<section>] //array of sections
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "SetSections",
@@ -344,9 +344,9 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
 }
 ```
 <!-- tabs:end -->
-### Esempio
+### Example
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "SetSections",
@@ -381,7 +381,7 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
     ]
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "SetSections",
@@ -391,36 +391,36 @@ Caricamento in memoria -> Modifica dei valori delle sezioni -> Visualizzazione s
 <!-- tabs:end -->
 
 # GetSection
-> Restituisce i valori dei una sezione del layout corrente
+Get section parameters of current layout
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "GetSection",
-"name": <string> //nome della sezione
+"name": <string> //section name
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "GetSection",
-"value": <section> //parametri della sezione 
+"value": <section> // parameter of section
 ```
-I parametri della sezione che vengono restituiti si riferiscono agli attributi text, color e parameter (solo se la sezione è di tipo "counter")
+The attributes of sections are "text", "color" e "parameter" (only the section is "counter" type)
 
 <!-- tabs:end -->
 
-### Esempio
+### Example
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "GetSection",
 "name": "score1"
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "GetSection",
@@ -441,33 +441,33 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 <!-- tabs:end -->
 
 # GetSections
-> Restituisce i valori di tutte le sezioni del layout corrente
+Get all sections of current layout
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "GetSections"
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "GetSections",
-"value": [<section>] //array delle sezioni presenti nel layout
+"value": [<section>]
 }
 ```
 <!-- tabs:end -->
 # Horn
-> Fa emettere un suono al buzzer del LEDbox
+Play a sound
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "Horn",
-"value":<horn> //parametri della tipologia di suono
+"value":<horn>
 }
 ```
-### ** Risposta **
+### ** Response **
 ```json
 {
 "sender": "Horn",
@@ -477,10 +477,10 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 <!-- tabs:end -->
 
 # GetConfigs
-> Restituisce tutti i parametri di configurazioni del LEDbox
+Get all LEDbox config parameters
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "GetConfigs",
@@ -488,28 +488,28 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 }
 ```
 
-### ** Risposta **
+### ** Response **
 
 ```json
 {
 "sender": "GetConfigs",
-"value":[<config>] // array con i parametri del LEDbox
+"value":[<config>]
 }
 ```
 <!-- tabs:end -->
 # SetConfig
-> Imposta un parametro del LEDbox
+Set a LEDbox config parameter
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "SetConfig",
-"value":<config> // parametro da impostare
+"value":<config> //parameter to setting
 }
 ```
 
-### ** Risposta **
+### ** Response **
 
 ```json
 {
@@ -519,9 +519,9 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 ```
 
 <!-- tabs:end -->
-### Esempio
+### Example
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "SetConfig",
@@ -533,7 +533,7 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 }
 ```
 
-### ** Risposta **
+### ** Response **
 
 ```json
 {
@@ -544,18 +544,18 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 <!-- tabs:end -->
 
 # SetConfigs
-> Imposta più parametri di configurazione del LEDbox
+Set one or more configs parameter of the LEDbox
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "SetConfigs",
-"value":[<config>] // array dei parametri da impostare
+"value":[<config>] 
 }
 ```
 
-### ** Risposta **
+### ** Response **
 
 ```json
 {
@@ -567,10 +567,10 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 <!-- tabs:end -->
 
 # Reboot
-> Riavvia il LEDbox
+Reboot LEDbox
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "Reboot",
@@ -578,7 +578,7 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 }
 ```
 
-### ** Risposta **
+### ** Response **
 
 ```json
 {
@@ -591,10 +591,10 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 
 # Upload
 
-> Inizia l'upload di un file layout all'interno del LEDbox.
+Start a file uploading process
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "Upload",
@@ -604,7 +604,7 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 }
 ```
 
-### ** Risposta **
+### ** Response **
 
 ```json
 {
@@ -616,10 +616,10 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 
 <!-- tabs:end -->
 
-## Esempio
+### Example
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
 "cmd": "Upload",
@@ -633,7 +633,7 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
 }
 ```
 
-### ** Risposta **
+### ** Response **
 
 ```json
 {
@@ -641,7 +641,6 @@ I parametri della sezione che vengono restituiti si riferiscono agli attributi t
     "sender": "Upload",
     "value":{
         filename:"sponsor1.jpg",
-        filepath:"c:\sponsors\sponsor1.jpg",
         type:"media",
         exist:false
     }

@@ -1,2 +1,5 @@
 * [Home](/)
 * [Docs](/)
+- [Language](/)
+ - [Italiano](/it/)
+ - [English](/en)

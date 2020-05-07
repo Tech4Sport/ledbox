@@ -1,5 +1,5 @@
-# Introduzione
-Il LEDbox è un sistema di visualizzazione su schermi LED matrix RGB. Ogni schermata renderizzata appartiene ad un "layout", un file XML nel quale sono specificate le funzioni e caratteristiche di ogni area dello schermo (definita "section"): per ognuna di questa si può specificare se visualizzare un contenuto testuale, una forma o un'immagine. Di seguito un esempio di file layout:
+# Introduction
+The LEDbox is a display system on RGB LED matrix LED. Each rendered screen belongs to a "layout", an XML file in which are specified for each area of the screen (defined "section") their functions and characteristics: for each "section" you can specify whether to display a textual content, a shape or an image. Below is an example of a layout file:
 ```xml
 <?xml version="1.0"?>
 <layout name="volleyball_matchscore_02">
@@ -23,27 +23,25 @@ Il LEDbox è un sistema di visualizzazione su schermi LED matrix RGB. Ogni scher
 </layout>
 ```
 
-Questo file renderizza sullo schermo del LEDbox questa immagine:
+This file show to screen of LEDbox this image:
 
 ![Example Layout](/images/example_layout.png)
 
-Sul LEDbox è possibile caricare più file layout che possono eseguire renderizzazioni differenti. Ogni file layout può essere caricato dinamicamente tramite i comandi API (descritti nel proseguio) così come ogni section presente può essere modificata con le API: in questo modo il LEDbox può adattarsi a tutte le esigenze sportive e non.
+On LEDBox it's possible load more layout files. Every layout file can be uploaded by API's commands, as well as every "section" can be modified by API: in this way the LEDbox can adapt to all sporting and non-sporting needs
+For use APIs it's first necessary connect the LEDbox.
 
-Per poter utilizzare le API è neccessario dapprima effettuare una connessione al LEDbox.
+# Connections
 
+The LEDbox architectures its based by request/response messagging over every communication protocols avaible on LEDbox as Ethernet/Wifi/Bluetooth/USB Serial.
 
-# Connessione
+For start the communication it's first necessary the connection to device over a protocol and after send a message (described in API section of this documentation). 
 
-L'architettura di comunicazione del LEDbox è basato su messaggistica request/response veicolato su tutti i protocolli di comunicazione disponibili sul LEDbox come Ethernet/Wifi/Bluetooth/USB Serial.
+For TCP/IP communication its possible:
+* connect the LEDbox (over LAN or Wifi) to a existing network: in this way it's assigned an IP address to LEDbox
+* connect the software client to hotspot network of the LEDbox: in this way the LEDbox will have default IP address __172.24.1.1__
 
-Per avviare la comunicazione è necessario effettuare prima la connessione al dispositivo secondo un protocollo, e poi inviare i diversi messaggi (descritti nella sezione API). 
-
-Per le comunicazioni TCP/IP è possibile:
-* Connettere il LEDbox (in LAN o Wifi) ad una rete esistente: in questo caso al LEDbox verrà assegnato un indirizzo IP al quale connettersi
-* Connettere il software client direttamente alla rete hotspot del LEDbox: in questo caso il LEDbox avrà l'indirizzo IP di default __172.24.1.1__
-
-Per entrambe le tipologie la porta di comunicazione TCP del LEDbox è la __8889__.
-Di seguito l'esempio di connessione TCP/IP al LEDbox:
+For both the TCP port of the LEDbox is __8889___.
+To below an example for TCP/IP connection to LEDbox:
 
 <!-- tabs:start -->
 ### ** Python **
@@ -205,9 +203,8 @@ function connect(onconnect,onerror){
 
 <!-- tabs:end -->
 
+For Bluetooth communication, the client device must be pared to the LEDbox: the pairing process it's possible only on first minute of start of the LEDbox.
 
-
-Per la comunicazione Bluetooth bisogna effettuare il paring del dispositivo client al LEDbox: il processo di accoppiamento è possibile solo nel primo minuto di attività del LEDbox.
 
 <!-- tabs:start -->
 ### ** Python **
@@ -215,7 +212,7 @@ Per la comunicazione Bluetooth bisogna effettuare il paring del dispositivo clie
 import bluetooth
 import threading
 
-mac_address="00:12:D2:5A:BD:E4"
+mac_address="00:12:D2:5A:BD:E4" #Bluetooth MAC Address of LEDbox
 port=1
 
 def onMessageReceived(sock)
@@ -244,8 +241,8 @@ if __name__ == "__main__":
 
 <!-- tabs:end -->
 
+For Serial USB communication it's neccessary setting the connection with this parameters:
 
-Per la comunicazione Serial USB è necessario impostare una connessione seriale con i seguenti parametri:
 * Baud Rate: 38400
 * Parity: None
 * Bit : 8
@@ -325,40 +322,40 @@ connect((onconnect)=>{
 
 <!-- tabs:end -->
 
-# Invio e ricezione
+# Sending and receiving
 
-> I messaggi API sono in formato JSON (https://www.json.org) e seguono la seguente strutturazione:
+The APIs are in JSON format (https://www.json.org) with the this structure:
 
 <!-- tabs:start -->
-### ** Richiesta **
+### ** Request **
 ```json
 {
-"cmd": <metodo da richiamare>,
-"value": <parametri del metodo>
+"cmd":<string>, //method to call,
+"value": <...> //parameters of method
 }
 ```
 
-### ** Risposta corretta **
+### ** Correct response **
 ```json
 {
 "status": "Ok",
-"sender" : <metodo richiamato>,
-"value": <valori restituiti dal metodo>
+"sender" : <string>, //method called,
+"value": <...> // values of method called
 }
 ```
-### ** Risposta di errore **
+### ** Error response **
 
 ```json
 {
 "status": "Error",
-"sender" : <metodo richiamato>,
-"error_code":<codice errore>,
-"message": <messaggio errore errore>,
+"sender" : <string>, // method called,
+"error_code":<int>, // code error,
+"message":<string> // description of error
 }
 ```
 <!-- tabs:end -->
 
->I messaggi JSON vengono inviati sottoforma di stringhe codificate in UTF-8 e a sua volta compresse in GZip (https://www.gzip.org/). Di seguito vengono riportate alcuni codici di per la codifica dei messaggi:
+The JSON message are sending as UTF-8 string compressed in GZip (https://www.gzip.org/). On below some script for coding the message:
 
 <!-- tabs:start -->
 ### ** Python **
@@ -467,8 +464,8 @@ var message_to_send=CompressString(message)
 
 ```
 <!-- tabs:end -->
+> For receiving the messages first these must decompress and after these must parsing in JSON. On below some script for decoding the message: 
 
-> Per la ricezione dei messaggi questi devono essere dapprima decompressi e poi parserizzati in JSON. Di seguito vengono riportate alcuni codici di per la decodifica dei messaggi:
 
 <!-- tabs:start -->
 ### ** Python **
@@ -527,31 +524,27 @@ function DecompressString(message){
 
 ```
 <!-- tabs:end -->
-# Upload
+# Uploading a file
 
-Il processo di upload di un file sul LEDbox avviene differentemente se la connessione è TCP/IP, Bluetooth o USB serial. In particolare:
+For process to uploading a file on LEDbox this occurs differently if the connection is TCP/IP, Bluetooth or Serial USB:
 
-* Nel caso di TCP/IP il LEDbox riceve file su un socket TCP sulla porta 12345
-* Nel caso di Bluetooth il LEDbox riceve file su un socket con UUID 00001101-0000-1000-8000-00805F9B34FC (LEDBoxUpload)
-* Nel caso di USB Serial il LEDbox riceve file sulla stessa porta seriale a cui è aperta la connessione.
+* For TCP/IP, the LEDbox receive a file over socket on TCP port __12345__
+* For Bluetooth, the LEDbox receive a file over socket with UUID 00001101-0000-1000-8000-00805F9B34FC (LEDBoxUpload)
+* For Serial USB, the LEDbox receive a file on the same serial port to which the connection is open.
 
-Per le prime due è possibile inviare un file al LEDbox e parallelamente inviare altri messaggi, mentre per l'ultima non è possibile procedere all'invio di un messaggio fino a quando l'upload non è completato.
+For sending a file you need:
 
-Per l'invio di un file bisogna:
+1. Send a API message "Upload" for start a uploading process
+2. When you receive a confirm message, you can start send a file as a stream bytes.
+3. On finish on sending, the LEDbox response with a message "Uploaded" to confirm that upload is completed.
 
-1. Inviare il messaggio di API "Upload" che indica che verrà inviato un file
-2. Alla ricezione di conferma che il messaggio API è stato ricevuto, iniziare l'invio del file sottoforma di stream di byte
-3. Al termine dell'invio si riceve dal LEDbox il messaggio "Uploaded" che indica che l'upload è stato completato.
+If the file is a ZIP format, after receiving the LEDbox automatically performs the decompression.
 
-Se il file inviato è in formato ZIP, il LEDbox dopo la ricezione provvede automaticamente ad effettuare la decompressione nella cartella in cui è stato caricato.
-
-# Esempio
-
-Per avviare una comunicazione con il LEDbox, bisogna inviare il messaggio "Init" come dall'esempio riportato di seguito:
+# Example
+For estabilishing a communication with the LEDbox, you must send a "Init" message as the example below:
 
 <!-- tabs:start -->
 ### ** Python **
-Esempio di connessione TCP/IP con l'hotspot del LEDbox
 ```python
 
 import socket
@@ -560,7 +553,7 @@ from io import BytesIO
 import gzip
 import json
 
-host="192.168.1.7"
+host="192.168.1.7" #IP address of LEDbox
 port=8889
 
 def CompressString(message):
@@ -767,8 +760,6 @@ public class APILEDbox
     }
 
 ```
-
-
 <!-- tabs:end -->
 
 
